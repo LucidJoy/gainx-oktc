@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Example server for working with @spheron/storage and @spheron/browser-upload packages",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "build": "yarn build"
   },
   "keywords": [],
   "author": "Spheron Team",
