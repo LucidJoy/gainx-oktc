@@ -6,7 +6,7 @@ import { publicProvider } from "wagmi/providers/public";
 import { WagmiConfig, createConfig, configureChains } from "wagmi";
 
 // import { filecoinHyperspace, mainnet } from "@wagmi/core/chains";
-import { polygonMumbai, sepolia } from "wagmi/chains";
+// import { polygonMumbai, sepolia } from "wagmi/chains";
 import { alchemyProvider } from "@wagmi/core/providers/alchemy";
 import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
 
@@ -19,63 +19,50 @@ import {
   ConnectKitButton,
   getDefaultClient,
 } from "connectkit";
-// import { filecoinHyperspace, polygonMumbai } from "wagmi/chains";
 
-// const { chains, publicClient, webSocketPublicClient } = configureChains(
-//   [filecoinHyperspace],
-//   [
-//     alchemyProvider({ apiKey: "9QZyJkzDMZ95NefvJWxJHgFB2ohU6ka9" }),
-//     publicProvider,
-//   ]
-// );
-
-// const connector = new MetaMaskConnector({
-//   chains: [filecoinHyperspace],
-// });
-
-const theta = {
-  id: 365,
-  name: "Theta",
-  network: "theta",
+const okeChain = {
+  id: 65,
+  name: "OKExChain Testnet",
+  network: "OKExChain Testnet",
   iconUrl: "https://example.com/icon.svg",
   iconBackground: "#fff",
   nativeCurrency: {
     decimals: 18,
-    name: "Theta",
-    symbol: "TFUEL",
+    name: "OKT",
+    symbol: "OKT",
   },
   rpcUrls: {
     default: {
-      http: ["https://eth-rpc-api-testnet.thetatoken.org/rpc"],
+      http: ["https://exchaintestrpc.okex.org"],
     },
   },
   blockExplorers: {
     default: {
-      name: "Theta MetaChain",
-      url: "https://explorer.thetatoken.org/",
+      name: "OKExChain Testnet",
+      url: "https://www.oklink.com/oktc-test",
     },
     etherscan: {
-      name: "Theta MetaChain",
-      url: "https://explorer.thetatoken.org/",
+      name: "OKExChain Testnet",
+      url: "https://www.oklink.com/oktc-test",
     },
   },
-  testnet: false,
+  testnet: true,
 };
 
 const { chains, provider, publicClient, webSocketPublicClient } =
   configureChains(
-    [polygonMumbai, sepolia],
+    [okeChain],
     [
       jsonRpcProvider({
         rpc: (chain) => ({
-          http: `https://eth-rpc-api-testnet.thetatoken.org/rpc`,
+          http: `https://exchaintestrpc.okex.org`,
         }),
       }),
     ]
   );
 
 const config = createConfig({
-  autoConnect: false,
+  autoConnect: true,
   connectors: [new MetaMaskConnector({ chains })],
   publicClient,
   webSocketPublicClient,
