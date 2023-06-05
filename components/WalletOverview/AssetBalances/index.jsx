@@ -19,12 +19,19 @@ import CreateLendContext from "../../../context/LendContext";
 // overview page items
 
 const AssetBalances = ({ overview, lender, borrower }) => {
-  const { listNftToMarketplace, borrowerList, lenderList, ended, setEnded, getIdToLendingStates } =
-    useContext(CreateLendContext);
+  const {
+    listNftToMarketplace,
+    borrowerList,
+    lenderList,
+    ended,
+    setEnded,
+    getIdToLendingStates,
+  } = useContext(CreateLendContext);
 
-    const [status, setStatus] = useState([]);
+  const [status, setStatus] = useState([]);
 
-  let items, statuses = [];
+  let items,
+    statuses = [];
 
   if (overview) {
     console.log("Overview dashboard");
@@ -68,50 +75,52 @@ const AssetBalances = ({ overview, lender, borrower }) => {
           </p>
         ) : (
           items.map((x, index) => (
-          <div className={styles.row}>
-            <div className={styles.col}>
-              <div className={styles.currency}>
-                {/* <div className={styles.icon}>
+            <div className={styles.row}>
+              <div className={styles.col}>
+                <div className={styles.currency}>
+                  {/* <div className={styles.icon}>
                   <img src={x.icon} alt="Currency" />
                 </div> */}
-                <div className={styles.details}>
-                  <div className={styles.info}>{`# ${x.escrowId}`}</div>
-                  {/* <div className={styles.info}>001</div> */}
+                  <div className={styles.details}>
+                    <div className={styles.info}>{`# ${x.escrowId}`}</div>
+                    {/* <div className={styles.info}>001</div> */}
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className={styles.col}>
-              {x.apy && (
+              <div className={styles.col}>
+                {x.apy && (
                   <div className={cn("category-green", styles.category)}>
                     {`${x.apy} % APY`}
                   </div>
                 )}
-              {/* <div className={cn("category-green", styles.category)}>15</div> */}
-            </div>
-            <div className={styles.col}>
-              <div className={styles.info}>{`${x.amount} TFUEL`}</div>
-              {/* <div className={styles.info}>2 TFUEL</div> */}
-            </div>
-            <div className={styles.col}>
-              <div className={styles.info}>{`${x.tenure} months`}</div>
-              {/* <div className={styles.info}>{`7 days`}</div> */}
-            </div>
-            <div className={styles.col}>
-              <div className={styles.info}>{`${x.isInsuared ? 'True' : 'Not Insured'}`}</div>
-              {/* <div className={styles.info}>True</div> */}
-            </div>
-            <div className={styles.col}>
-              <div
-                className={`${styles.info} ${
-                  ended ? styles.ended : styles.ongoing
-                }`}
-              >
-                {console.log("Completed status: ", x.completed)}
-                {x.completed ? "Ended" : "Ongoing"}
+                {/* <div className={cn("category-green", styles.category)}>15</div> */}
+              </div>
+              <div className={styles.col}>
+                <div className={styles.info}>{`${x.amount} OKT`}</div>
+                {/* <div className={styles.info}>2 OKT</div> */}
+              </div>
+              <div className={styles.col}>
+                <div className={styles.info}>{`${x.tenure} months`}</div>
+                {/* <div className={styles.info}>{`7 days`}</div> */}
+              </div>
+              <div className={styles.col}>
+                <div className={styles.info}>{`${
+                  x.isInsuared ? "True" : "Not Insured"
+                }`}</div>
+                {/* <div className={styles.info}>True</div> */}
+              </div>
+              <div className={styles.col}>
+                <div
+                  className={`${styles.info} ${
+                    ended ? styles.ended : styles.ongoing
+                  }`}
+                >
+                  {console.log("Completed status: ", x.completed)}
+                  {x.completed ? "Ended" : "Ongoing"}
+                </div>
               </div>
             </div>
-          </div>
-                    ))
+          ))
         )}
       </div>
     </div>

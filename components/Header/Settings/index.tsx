@@ -47,18 +47,18 @@ const Settings = ({ items, className }: SettingsProps) => {
             alt='Avatar'
           />
         </button>
+
         <div className={styles.body}>
-          {/* <Link href='/user-profile'> */}
-            <div className={styles.top}>
-              <div className={styles.details}>
-                <div className={cn("title", styles.user)}>Arv</div>
-                <div className={styles.login}>@arv31</div>
-              </div>
-              <div className={styles.arrow}>
-                <Icon name='arrow-next' />
-              </div>
+          <div className={styles.top}>
+            <div className={styles.details}>
+              <div className={cn("title", styles.user)}>Arv</div>
+              <div className={styles.login}>@arv31</div>
             </div>
-          {/* </Link> */}
+            <div className={styles.arrow}>
+              <Icon name='arrow-next' />
+            </div>
+          </div>
+
           <div className={styles.list}>
             {items.map((x, index) => (
               <NavLink

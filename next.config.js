@@ -9,7 +9,7 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
-    domains: ["user-assets-thetadrop.imgix.net"],
+    domains: ["ipfs.io"],
   },
 };
 

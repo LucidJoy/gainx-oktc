@@ -94,7 +94,7 @@ const CardDetails = ({}: CardDetailsProps) => {
               className={styles.description}
               title={activeObject.title}
               code={id}
-              crypto={`${activeObject.amount} TFUEL`}
+              crypto={`${activeObject.amount} OKT`}
               price={`${activeObject.tenure} Months`}
             />
             <div className={styles.control}>

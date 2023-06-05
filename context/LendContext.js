@@ -13,9 +13,9 @@ import { useRouter } from "next/router";
 
 const CreateLendContext = createContext({});
 
-const gainxContractAddress = "0x5a81D56F710a86A5feB51cCcc3Edd366c87098BC"; // Theta
+const gainxContractAddress = "0xd4e6eC0202F1960dA896De13089FF0e4A07Db4E9";
 // const gainxTokenContractAddress = "0xd4e6eC0202F1960dA896De13089FF0e4A07Db4E9";
-const tnt20ContractAddress = "0xEC6C1001a15c48D4Ea2C7CD7C45a1c5b6aD120E9";
+const redeemGainxContractAddress = "0x2849CA671e7029BD66Fa119d418a498713927bE7";
 
 // Gas-limit: 500000000
 
@@ -30,6 +30,10 @@ export const CreateLendProvider = ({ children }) => {
   const [currentAccount, setCurrentAccount] = useState("");
   const [graphPrompt, setGraphPrompt] = useState("");
 
+  // Spheron
+  const [uploadLink, setUploadLink] = useState("");
+  const [dynamicLink, setDynamicLink] = useState("");
+
   const [ended, setEnded] = useState(true);
 
   const [wishlistForm, setWishlistForm] = useState({
@@ -40,10 +44,11 @@ export const CreateLendProvider = ({ children }) => {
   const [myNftForm, setMyNftForm] = useState({
     nftAddress: "",
     nftId: "",
-    chain: "",
+    chain: "OKExChain",
     estimatedAmount: "",
     tenure: "",
     apy: "",
+    owner: "",
   });
   const [allListings, setAllListings] = useState([]);
   const [myNfts, setMyNfts] = useState([]);
@@ -80,6 +85,10 @@ export const CreateLendProvider = ({ children }) => {
   };
 
   useEffect(() => {
+    setMyNftForm({ ...myNftForm, owner: currentAccount });
+  }, [currentAccount]);
+
+  useEffect(() => {
     (async () => {
       if (ethereum.isConnected()) {
         const accounts = await window.ethereum.request({
@@ -90,7 +99,7 @@ export const CreateLendProvider = ({ children }) => {
     })();
   }, []);
 
-  let offers = ["2060.20", "2065.69", "2072.66", "2079.51"];
+  let offers = ["55.60", "50.20", "40.78", "21.91"];
   useEffect(() => {
     if (Number(myNftForm.tenure) == 1) {
       console.log("Offer 0");
@@ -187,7 +196,7 @@ export const CreateLendProvider = ({ children }) => {
           nftId: Number(escrow.nftId._hex),
           lender: escrow.lender,
           borrower: escrow.borrower,
-          amount: Number(escrow.amount._hex).toString(),
+          amount: utils.formatEther(Number(escrow.amount._hex).toString()),
           tenure: Number(escrow.tenure._hex),
           apy: Number(escrow.apy._hex),
           isInsuared: escrow.isInsuared,
@@ -303,7 +312,7 @@ export const CreateLendProvider = ({ children }) => {
           nftId: Number(offer.nftId._hex),
           lender: offer.lender,
           borrower: offer.borrower,
-          amount: Number(offer.amount._hex).toString(),
+          amount: utils.formatEther(Number(offer.amount._hex).toString()),
           tenure: Number(offer.tenure._hex),
           apy: Number(offer.apy._hex),
           isInsuared: offer.isInsuared,
@@ -362,7 +371,7 @@ export const CreateLendProvider = ({ children }) => {
           nftId: Number(offer.nftId._hex),
           lender: offer.lender,
           borrower: offer.borrower,
-          amount: Number(offer.amount._hex).toString(),
+          amount: utils.formatEther(Number(offer.amount._hex).toString()),
           tenure: Number(offer.tenure._hex),
           apy: Number(offer.apy._hex),
           isInsuared: offer.isInsuared,
@@ -788,6 +797,10 @@ export const CreateLendProvider = ({ children }) => {
         setSentiment,
         graphPrompt,
         setGraphPrompt,
+        uploadLink,
+        setUploadLink,
+        dynamicLink,
+        setDynamicLink,
       }}
     >
       {children}

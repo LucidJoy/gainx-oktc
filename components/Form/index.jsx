@@ -1,6 +1,9 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./Form.module.sass";
+import { upload } from "@spheron/browser-upload";
 import cn from "classnames";
+import { useRouter } from "next/router";
+import { Triangle } from "react-loader-spinner";
 
 import CreateLendContext from "../../context/LendContext";
 import Link from "next/link";
@@ -18,14 +21,57 @@ const Form = ({ profile }) => {
     estAmt,
     sentiment,
     setSentiment,
+    uploadLink,
+    setUploadLink,
+    dynamicLink,
+    setDynamicLink,
   } = useContext(CreateLendContext);
+
+  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
 
   const handleListing = async () => {
     const response = await listNftToMarketplace(myNftForm);
     console.log("Handle listing response: ", response);
   };
 
-  useEffect(() => console.log(myNftForm), [myNftForm]);
+  // useEffect(() => console.log(myNftForm), [myNftForm]);
+
+  useEffect(() => {
+    setMyNftForm({ ...myNftForm, estimatedAmount: estAmt });
+  }, [estAmt]);
+
+  const handleSpheronUpload = async () => {
+    if (
+      myNftForm.owner === "" ||
+      myNftForm.nftAddress === "" ||
+      myNftForm.tenure === ""
+    ) {
+      return alert("Insufficient data.");
+    }
+
+    const jsonString = JSON.stringify(myNftForm);
+    const blob = new Blob([jsonString], { type: "application/json" });
+    const file = new File([blob], "formdata.json");
+
+    console.log(" -->", file);
+
+    try {
+      setIsLoading(true);
+      const response = await fetch("http://localhost:8111/initiate-upload");
+      const responseJson = await response.json();
+      const uploadResult = await upload([file], {
+        token: responseJson.uploadToken,
+      });
+
+      setUploadLink(uploadResult.protocolLink);
+      setDynamicLink(uploadResult.dynamicLinks[0]);
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <div className={styles.list_form}>
@@ -95,14 +141,14 @@ const Form = ({ profile }) => {
             <option value='fvm'>FVM Hyperspace</option>
             <option value='polygon'>Polygon Mumbai</option>
           </select> */}
-          <p style={{ color: "white", fontSize: "15px" }}>Theta Network</p>
+          <p style={{ color: "white", fontSize: "15px" }}>OKExChain</p>
         </div>
 
         <div className={styles.input}>
           <p className={styles.label}>Owner:</p>
 
-          <p className={styles.data}>
-            {currentAccount ? currentAccount : "Connect your wallet"}
+          <p className={styles.data} id='owner'>
+            {currentAccount ? currentAccount : "Wallet not connected."}
           </p>
         </div>
 
@@ -137,7 +183,7 @@ const Form = ({ profile }) => {
         <div className={styles.input}>
           <p className={styles.label}>Sentiment Analysis Score:</p>
           <Link
-            href='https://blockchainreporter.net/theta-network-declares-earworm-media-of-rob-feldman-as-its-collaborator-validator-node/'
+            href='https://www.rollingstone.com/culture/culture-news/bayc-bored-ape-yacht-club-nft-interview-1250461/'
             rel='noreferrer'
             target='_blank'
           >
@@ -189,19 +235,42 @@ const Form = ({ profile }) => {
           alignItems: "center",
           justifyContent: "center",
           marginTop: "20px",
+          gap: "30px",
         }}
       >
         <button
           className={cn("button")}
           style={{ width: "50%", textAlign: "center" }}
           onClick={async () => {
-            let response = await handleListing();
-            console.log("Response to listing: ", response);
-            console.log("List clicked");
+            // await handleListing();
+            await handleSpheronUpload();
+            console.log("🚧 ", myNftForm);
           }}
         >
           List
         </button>
+
+        {isLoading ? (
+          <>
+            <div className=''>
+              <Triangle
+                height='30'
+                width='30'
+                color='#EE652A'
+                ariaLabel='triangle-loading'
+                wrapperStyle={{}}
+                wrapperClassName=''
+                visible={true}
+              />
+            </div>
+          </>
+        ) : (
+          <Link href={uploadLink} rel='noreferrer' target='_blank'>
+            <div className={cn("button-stroke button-sm", styles.button)}>
+              View Data
+            </div>
+          </Link>
+        )}
       </div>
     </div>
   );
