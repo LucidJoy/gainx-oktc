@@ -1,67 +1,75 @@
 const cards = [
   {
     url: "/character-details",
-    title: "Red Flame #01",
+    title: "BAYC #5033",
     label: "#01",
     image:
-      "https://user-assets-thetadrop.imgix.net/user_c14333f0y1c7hnd7jzjf1wz4hsi/drop_md3pkczu54s0vih196gdwfparzm/images/5299.png",
+      "https://ipfs.io/ipfs/QmRWSXn26HaBdLrR42g3A2fM9aBUvrYpRPE6QMZvv9C6Zo",
   },
   {
     url: "/character-details",
-    title: "Green Militia #02",
+    title: "BAYC #1368",
     label: "#02",
     image:
-      "https://user-assets-thetadrop.imgix.net/user_c14333f0y1c7hnd7jzjf1wz4hsi/drop_md3pkczu54s0vih196gdwfparzm/images/12.png",
+      "https://ipfs.io/ipfs/QmQrDv9rgW9Y6vpDoh4ouJwZnaeS1hn3ovzEei97Yzwwt6",
   },
   {
     url: "/character-details",
-    title: "Pink Brains #03",
+    title: "BAYC #7737",
     label: "#03",
     image:
-      "https://user-assets-thetadrop.imgix.net/user_c14333f0y1c7hnd7jzjf1wz4hsi/drop_md3pkczu54s0vih196gdwfparzm/images/7704.png",
+      "https://ipfs.io/ipfs/QmdnZNcduJ8sVA2D3qk9jVvJcsHMjyBMGqWyKCXB9U4WCj",
   },
   {
     url: "/character-details",
-    title: "Star Troop #04",
+    title: "BAYC #170",
     label: "#04",
     image:
-      "https://user-assets-thetadrop.imgix.net/user_c14333f0y1c7hnd7jzjf1wz4hsi/drop_md3pkczu54s0vih196gdwfparzm/images/1230.png",
+      "https://ipfs.io/ipfs/QmaqjNA6YJEmMcc9gjS3juREH11GxCsVUooZPZuYnNejKa",
   },
   {
     url: "/character-details",
-    title: "Zombie Red #05",
+    title: "BAYC #6360",
     label: "#05",
     image:
-      "https://user-assets-thetadrop.imgix.net/user_c14333f0y1c7hnd7jzjf1wz4hsi/drop_md3pkczu54s0vih196gdwfparzm/images/8676.png",
+      "https://ipfs.io/ipfs/QmTpJm5UeNWVu2nxGwHeXmwJXZ1B189Dw8PBeyS42ivCZ9",
   },
   {
     url: "/character-details",
-    title: "Purple Butcher #06",
+    title: "BAYC #2836",
     label: "#06",
     image:
-      "https://user-assets-thetadrop.imgix.net/user_c14333f0y1c7hnd7jzjf1wz4hsi/drop_md3pkczu54s0vih196gdwfparzm/images/8812.png",
+      "https://ipfs.io/ipfs/QmYipSwcyLsv9FYndT1aUrA5FpBFAA2zYGstq1enjPLTyj",
   },
   {
     url: "/character-details",
-    title: "Aviator Pirate #07",
-    label: "#07",
+    title: "BAYC #9301",
+    label: "#06",
     image:
-      "https://user-assets-thetadrop.imgix.net/user_c14333f0y1c7hnd7jzjf1wz4hsi/drop_md3pkczu54s0vih196gdwfparzm/images/8783.png",
+      "https://ipfs.io/ipfs/QmSe8HJgZEJ7jcd9xq2q8KhUjACRAZEEcRBW4SZqswe2hr",
   },
   {
     url: "/character-details",
-    title: "Pink Devil #08",
-    label: "#08",
+    title: "BAYC #250",
+    label: "#06",
     image:
-      "https://user-assets-thetadrop.imgix.net/user_c14333f0y1c7hnd7jzjf1wz4hsi/drop_md3pkczu54s0vih196gdwfparzm/images/1340.png",
+      "https://ipfs.io/ipfs/QmS6AzGLuh7N4hn4S5ZxvwC87J5eaFHxsnRpac4UKvBRS5",
   },
   {
     url: "/character-details",
-    title: "Party Popper #09",
-    label: "#09",
+    title: "BAYC #9469",
+    label: "#06",
     image:
-      "https://user-assets-thetadrop.imgix.net/user_c14333f0y1c7hnd7jzjf1wz4hsi/drop_md3pkczu54s0vih196gdwfparzm/images/8968.png",
+      "https://ipfs.io/ipfs/QmdKV7vpwY3Kd8bSPFFwy1WWymG1Qpb57R1rBe6S9eu1jq",
   },
+  {
+    url: "/character-details",
+    title: "BAYC #6386",
+    label: "#06",
+    image:
+      "https://ipfs.io/ipfs/QmS5BDtXBS4k2Z2JrxsG4gPgCcMHYTWt5WQej3yoFp7GCE",
+  },
+
   //   {
   //     url: "/character-details",
   //     title: "Astronauto #07892",

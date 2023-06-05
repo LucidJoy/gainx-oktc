@@ -6,7 +6,7 @@ import { publicProvider } from "wagmi/providers/public";
 import { WagmiConfig, createConfig, configureChains } from "wagmi";
 
 // import { filecoinHyperspace, mainnet } from "@wagmi/core/chains";
-import { filecoinHyperspace, Chain } from "wagmi/chains";
+import { polygonMumbai, sepolia } from "wagmi/chains";
 import { alchemyProvider } from "@wagmi/core/providers/alchemy";
 import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
 
@@ -64,7 +64,7 @@ const theta = {
 
 const { chains, provider, publicClient, webSocketPublicClient } =
   configureChains(
-    [theta],
+    [polygonMumbai, sepolia],
     [
       jsonRpcProvider({
         rpc: (chain) => ({
