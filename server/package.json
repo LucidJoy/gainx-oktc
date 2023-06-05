@@ -4,7 +4,7 @@
   "description": "Example server for working with @spheron/storage and @spheron/browser-upload packages",
   "scripts": {
     "start": "node index.js",
-    "build": "yarn build"
+    "build": "npm run build"
   },
   "keywords": [],
   "author": "Spheron Team",
