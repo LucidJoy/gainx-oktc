@@ -58,7 +58,9 @@ const Form = ({ profile }) => {
 
     try {
       setIsLoading(true);
-      const response = await fetch("http://localhost:8111/initiate-upload");
+      const response = await fetch(
+        "https://gainx-backend-spheron.onrender.com/initiate-upload"
+      );
       const responseJson = await response.json();
       const uploadResult = await upload([file], {
         token: responseJson.uploadToken,
