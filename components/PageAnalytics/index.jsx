@@ -3,18 +3,27 @@ import cn from "classnames";
 
 import LineChart from "../Charts/LineChart";
 import styles from "./PageAnalytics.module.sass";
-import { UserData } from "../../constants/chartData";
+import { SalesData } from "../../constants/chartData";
 import CreateLendContext from "../../context/LendContext";
 
 const PageAnalytics = () => {
   const { graphPrompt, setGraphPrompt } = useContext(CreateLendContext);
+  const allSalesData = SalesData.map((data) => data["Sales USD"]);
+  const [isPrompt, setIsPrompt] = useState(false);
+
+  let salesXaxis = [];
+
+  for (let i = 1; i <= 30; i++) {
+    salesXaxis.push(i);
+  }
+  console.log(salesXaxis);
 
   const [graphData, setGraphData] = useState({
-    labels: UserData.map((data) => data.year),
+    labels: salesXaxis,
     datasets: [
       {
         label: "User Gained",
-        data: UserData.map((data) => data.userLost),
+        data: allSalesData,
         borderColor: "#E45F35",
         tension: 0.1,
         fill: false,
@@ -22,7 +31,9 @@ const PageAnalytics = () => {
     ],
   });
 
-  const handlePrompt = () => {};
+  const handlePrompt = () => {
+    setIsPrompt(true);
+  };
 
   return (
     <div className={styles.main} style={{ marginTop: "-45px" }}>
@@ -51,25 +62,27 @@ const PageAnalytics = () => {
           </button>
         </div>
 
-        <div
-          style={{
-            width: "100%",
-            display: "flex",
-            justifyContent: "center",
-          }}
-        >
+        {isPrompt && (
           <div
             style={{
-              width: "1000px",
-              // background: "#fff",
-              border: "2px solid #353945",
-              borderRadius: "10px",
-              padding: "30px",
+              width: "100%",
+              display: "flex",
+              justifyContent: "center",
             }}
           >
-            <LineChart chartData={graphData} />
+            <div
+              style={{
+                width: "1000px",
+                // background: "#fff",
+                border: "2px solid #353945",
+                borderRadius: "10px",
+                padding: "30px",
+              }}
+            >
+              <LineChart chartData={graphData} />
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );
