@@ -36,7 +36,7 @@ const Card = ({ className, item, bigPreview, saleItem, offer }: CardProps) => {
         className={cn(styles.preview, {
           [styles.preview_big]: bigPreview,
         })}
-        style={{ backgroundColor: item.background || "#EBE3D9" }}
+        style={{ backgroundColor: "#EBE3D9" }}
       >
         <div className={styles.image}>
           <Image
