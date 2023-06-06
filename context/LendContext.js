@@ -13,15 +13,15 @@ import { useRouter } from "next/router";
 
 const CreateLendContext = createContext({});
 
-const gainxContractAddress = "0xd4e6eC0202F1960dA896De13089FF0e4A07Db4E9";
+const gainxContractAddress = "0x5355C26d8CA768473eCE5dcFe5a31921d2F0E2f7";
 // const gainxTokenContractAddress = "0xd4e6eC0202F1960dA896De13089FF0e4A07Db4E9";
-const redeemGainxContractAddress = "0x2849CA671e7029BD66Fa119d418a498713927bE7";
+const redeemGainxContractAddress = "0xe0eBa5153d61071f68c8f82562DF4b62b2f370D4";
 
 // Gas-limit: 500000000
 
 const gainxAbi = gainx.abi;
 const gainxTokenAbi = gainxToken.abi;
-const tnt20TokenAbi = tnt20Token.abi;
+const redeemTokenAbi = tnt20Token.abi;
 let collectionAddress = "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d";
 let months = 3;
 

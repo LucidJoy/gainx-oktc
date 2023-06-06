@@ -14,7 +14,7 @@ import { numberWithCommas } from "../../utils";
 
 type CardProps = {
   className?: string;
-  item: any;
+  item?: any;
   bigPreview?: boolean;
   saleItem?: boolean;
   offer?: any;
