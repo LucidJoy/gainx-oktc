@@ -238,39 +238,45 @@ const Form = ({ profile }) => {
           gap: "30px",
         }}
       >
-        <button
-          className={cn("button")}
-          style={{ width: "50%", textAlign: "center" }}
-          onClick={async () => {
-            // await handleListing();
-            await handleSpheronUpload();
-            console.log("🚧 ", myNftForm);
-          }}
-        >
-          List
-        </button>
-
         {isLoading ? (
-          <>
-            <div className=''>
-              <Triangle
-                height='30'
-                width='30'
-                color='#EE652A'
-                ariaLabel='triangle-loading'
-                wrapperStyle={{}}
-                wrapperClassName=''
-                visible={true}
-              />
-            </div>
-          </>
+          <div className='-mr-[50px] ml-[20px] mt-[15px]'>
+            <Triangle
+              height='30'
+              width='30'
+              color='#EE652A'
+              ariaLabel='triangle-loading'
+              wrapperStyle={{}}
+              wrapperClassName=''
+              visible={true}
+            />
+          </div>
         ) : (
+          <button
+            className={cn("button")}
+            style={{ width: "50%", textAlign: "center" }}
+            onClick={async () => {
+              await handleListing();
+              await handleSpheronUpload();
+              console.log("🚧 ", myNftForm);
+            }}
+          >
+            List
+          </button>
+        )}
+
+        {uploadLink && (
           <Link href={uploadLink} rel='noreferrer' target='_blank'>
             <div className={cn("button-stroke button-sm", styles.button)}>
               View Data
             </div>
           </Link>
         )}
+        {/* <Link href={uploadLink} rel='noreferrer' target='_blank'>
+          <div className={cn("button-stroke button-sm", styles.button)}>
+            View Data
+          </div>
+          {console.log("--> ", uploadLink)}
+        </Link> */}
       </div>
     </div>
   );

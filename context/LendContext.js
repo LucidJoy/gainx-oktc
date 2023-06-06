@@ -438,7 +438,7 @@ export const CreateLendProvider = ({ children }) => {
         }
 
         estAmt = utils.parseEther(estAmt); // string
-        let listingPrice = utils.parseEther("0.5");
+        let listingPrice = utils.parseEther("0.01");
 
         const txRes = await contract._initEscrow(
           _borrower,
